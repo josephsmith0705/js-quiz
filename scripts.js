@@ -1,13 +1,14 @@
 let currentQuestion = 0;
 let score = 0;
-const questions = ['What colour is the sky','How many minutes are there in an hour'];
-const answers = ['Blue','Red','Green','Yellow','15','30','45','60']
-const correctAnswers = ['Blue','60'];
+const questions = ['What colour is the sky','How many minutes are there in an hour','Who invented gravity',
+	'What language is this written in','What colour are trees'];
+const answers = ['Blue','Red','Green','Yellow','15','30','45','60','Isaac Newton','Albert Einstein','Brahmagupta-II','None',
+	'HTML','CSS','JavaScript','All','Blue','Red','Green','Yellow']
+const correctAnswers = ['Blue','60','None','All','Green'];
 const question = document.getElementById('question');
 const questionFeedback = document.getElementById('questionFeedback');
 const title = document.getElementById('title');
 const nextButton = document.getElementById('nextButton');
-const QButtons = document.getElementsByClassName('questions');
 
 function checkAnswer(answer) {
 	if (correctAnswers[currentQuestion] === answers[answer+(4*currentQuestion)]){
@@ -17,7 +18,7 @@ function checkAnswer(answer) {
 		questionFeedback.textContent = 'Incorrect - The correct answer is ' + correctAnswers[currentQuestion];
 	}
 	nextButton.style.display = "block";
-	disableQButtons();
+	hideButtons();
 }
 
 function next() {
@@ -35,7 +36,7 @@ function updatePage() {
 	nextButton.style.display = 'none';
 	questionFeedback.textContent = '';
 	propagateButtons();
-	//enableQButtons();
+	showButtons();
 }
 
 function propagateButtons() {
@@ -46,31 +47,25 @@ function propagateButtons() {
 }
 
 function showResults() {
-	questionFeedback.textContent = 'Your total score is ' + score;
+	questionFeedback.textContent = 'You gave ' + score + ' correct answers, and ' + (questions.length - score) + ' incorrect answers';
 	question.textContent = 'Results:';
 	title.textContent = 'Results';
 	nextButton.style.display = 'none';
+	const startTime = date.getTime();
+}
+
+function hideButtons() {
 	document.getElementById("answer1").style.visibility = 'hidden';
 	document.getElementById("answer2").style.visibility = 'hidden';
 	document.getElementById("answer3").style.visibility = 'hidden';
 	document.getElementById("answer4").style.visibility = 'hidden';
 }
 
-/*function disableQButtons() {
-	var i;
-	for (i = 0; i < QButtons.length; i++) {
-		document.getElementById('answer' + i).disabled = true;
-	}
+function showButtons() {
+	document.getElementById("answer1").style.visibility = 'visible';
+	document.getElementById("answer2").style.visibility = 'visible';
+	document.getElementById("answer3").style.visibility = 'visible';
+	document.getElementById("answer4").style.visibility = 'visible';
 }
-
-function enableQButtons() {
-	var i;
-	for (i = 0; i < QButtons.length; i++) {
-		if QButtons[i].tagName = 'button'{
-			QButtons[i].disabled = false;
-
-		}
-	}
-}*/
 
 updatePage();
