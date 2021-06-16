@@ -2,16 +2,21 @@
     margin: 0px;
     background-color: lightgrey;
     text-align: center;
-}
-.questions{
-	
+	font-family: Montserrat;
 }
 #nextButton {
 	display: none;
 	margin: auto;
 }
+button {
+	background-color: white;
+	font-size: 25px;
+	border: none;
+	border-radius: 0px;
+}
 button:hover {
 	cursor: pointer;
+	background: grey;
 }
 
 
