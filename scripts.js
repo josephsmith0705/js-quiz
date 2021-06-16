@@ -1,7 +1,8 @@
 let currentQuestion = 0;
 let score = 0;
-const questions = ['What colour is the sky','What colour is grass'];
-const answers = ['Blue','Green'];
+const questions = ['What colour is the sky','How many minutes are there in an hour'];
+const answers = ['Blue','Red','Green','Yellow','15','30','45','60']
+const correctAnswers = ['Blue','60'];
 const question = document.getElementById('question');
 const questionFeedback = document.getElementById('questionFeedback');
 const title = document.getElementById('title');
@@ -9,11 +10,11 @@ const nextButton = document.getElementById('nextButton');
 const QButtons = document.getElementsByClassName('questions');
 
 function checkAnswer(answer) {
-	if (answers[currentQuestion] === answer){
+	if (correctAnswers[currentQuestion] === answers[answer+(4*currentQuestion)]){
 		score++;
 		questionFeedback.textContent = 'Correct! Your current score is ' + score + '.';
 	} else {
-		questionFeedback.textContent = 'Incorrect - The correct answer is ' + answers[currentQuestion];
+		questionFeedback.textContent = 'Incorrect - The correct answer is ' + correctAnswers[currentQuestion];
 	}
 	nextButton.style.display = "block";
 	disableQButtons();
@@ -33,7 +34,15 @@ function updatePage() {
 	title.textContent = 'Question ' + (currentQuestion+1);
 	nextButton.style.display = 'none';
 	questionFeedback.textContent = '';
+	propagateButtons();
 	//enableQButtons();
+}
+
+function propagateButtons() {
+	document.getElementById("answer1").textContent = answers[0+(4*currentQuestion)];
+	document.getElementById("answer2").textContent = answers[1+(4*currentQuestion)];
+	document.getElementById("answer3").textContent = answers[2+(4*currentQuestion)];
+	document.getElementById("answer4").textContent = answers[3+(4*currentQuestion)];
 }
 
 function showResults() {
@@ -41,7 +50,10 @@ function showResults() {
 	question.textContent = 'Results:';
 	title.textContent = 'Results';
 	nextButton.style.display = 'none';
-	QButtons.getElementsByTagName("button").disabled = true;
+	document.getElementById("answer1").style.visibility = 'hidden';
+	document.getElementById("answer2").style.visibility = 'hidden';
+	document.getElementById("answer3").style.visibility = 'hidden';
+	document.getElementById("answer4").style.visibility = 'hidden';
 }
 
 /*function disableQButtons() {
