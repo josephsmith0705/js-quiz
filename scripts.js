@@ -12,8 +12,7 @@ function checkAnswer(answer) {
 	if (answers[currentQuestion] === answer){
 		score++;
 		questionFeedback.textContent = 'Correct! Your current score is ' + score + '.';
-	}
-	else {
+	} else {
 		questionFeedback.textContent = 'Incorrect - The correct answer is ' + answers[currentQuestion];
 	}
 	nextButton.style.display = "block";
@@ -22,7 +21,11 @@ function checkAnswer(answer) {
 
 function next() {
 	currentQuestion++;
-	updatePage();
+	if (currentQuestion+1 > questions.length){
+		showResults();
+	} else {
+		updatePage();
+	}
 }
 
 function updatePage() {
@@ -33,14 +36,22 @@ function updatePage() {
 	//enableQButtons();
 }
 
-function disableQButtons() {
+function showResults() {
+	questionFeedback.textContent = 'Your total score is ' + score;
+	question.textContent = 'Results:';
+	title.textContent = 'Results';
+	nextButton.style.display = 'none';
+	QButtons.getElementsByTagName("button").disabled = true;
+}
+
+/*function disableQButtons() {
 	var i;
 	for (i = 0; i < QButtons.length; i++) {
 		document.getElementById('answer' + i).disabled = true;
 	}
 }
 
-/*function enableQButtons() {
+function enableQButtons() {
 	var i;
 	for (i = 0; i < QButtons.length; i++) {
 		if QButtons[i].tagName = 'button'{
@@ -49,5 +60,5 @@ function disableQButtons() {
 		}
 	}
 }*/
-	
+
 updatePage();
