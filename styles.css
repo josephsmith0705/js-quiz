@@ -1,0 +1,17 @@
+﻿body {
+    margin: 0px;
+    background-color: lightgrey;
+    text-align: center;
+}
+.questions{
+	
+}
+#nextButton {
+	display: none;
+	margin: auto;
+}
+button:hover {
+	cursor: pointer;
+}
+
+
