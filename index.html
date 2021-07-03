@@ -11,13 +11,17 @@
 <body>
 <div class="questions">
 	<h1 id="question"></h1>
-	<button onclick="checkAnswer(0)" id="answer1"></button>
-	<button onclick="checkAnswer(1)" id="answer2"></button>
-	<button onclick="checkAnswer(2)" id="answer3"></button>
-	<button onclick="checkAnswer(3)" id="answer4"></button>
+    <div id="question-grid">
+        <button class="answer-button" onclick="checkAnswer(0)" id="answer1"></button>
+        <button class="answer-button" onclick="checkAnswer(1)" id="answer2"></button>
+        <button class="answer-button" onclick="checkAnswer(2)" id="answer3"></button>
+        <button class="answer-button" onclick="checkAnswer(3)" id="answer4"></button>
+        </div>
     </div>
-<h3 id="questionFeedback"></h3>
-<button onclick="next()" id="nextButton">Next</button>
+<div class="feedback">
+    <h3 id="questionFeedback"></h3>
+    <button onclick="next()" id="nextButton">Next</button>
+</div>
 <script src="scripts.js"></script>
 </body>
 </html>
