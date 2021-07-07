@@ -19,13 +19,13 @@ body {
 	background-color: var(--accent-light);
 	font-size: 25px;
 	border: none;
-	border-radius: 10%;
-	padding: 125px 0;
+	padding: 25px 0;
 	box-shadow: 0px 1px 5px var(--accent-dark);
 	color: var(--bg-color);
+	z-index: 5;
 }
 
-.answer-button:hover {
+.answer-button:hover, .answer-button > *:hover{
 	cursor: pointer;
 	animation-name: buttonfade;
 	animation-duration: var(--animation-duration);
@@ -63,8 +63,8 @@ body {
 
 #question-grid{
 	display: grid;
-	grid-template-columns: auto auto;
-	grid-gap: 25px;
+	grid-template-columns: auto;
+	grid-gap: 5px;
 }
 
 #nextButton {

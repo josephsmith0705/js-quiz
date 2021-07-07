@@ -9,6 +9,7 @@ const question = document.getElementById('question');
 const questionFeedback = document.getElementById('questionFeedback');
 const title = document.getElementById('title');
 const nextButton = document.getElementById('nextButton');
+const answerButtons = document.querySelectorAll('.answer-button');
 
 function checkAnswer(answer) {
 	if (correctAnswers[currentQuestion] === answers[answer+(4*currentQuestion)]){
@@ -40,10 +41,9 @@ function updatePage() {
 }
 
 function propagateButtons() {
-	document.getElementById("answer1").textContent = answers[0+(4*currentQuestion)];
-	document.getElementById("answer2").textContent = answers[1+(4*currentQuestion)];
-	document.getElementById("answer3").textContent = answers[2+(4*currentQuestion)];
-	document.getElementById("answer4").textContent = answers[3+(4*currentQuestion)];
+	for (i=0; i<answerButtons.length; i++){
+		answerButtons[i].textContent = answers[i+(4*currentQuestion)];
+	}
 }
 
 function showResults() {
@@ -55,17 +55,15 @@ function showResults() {
 }
 
 function hideButtons() {
-	document.getElementById("answer1").style.visibility = 'hidden';
-	document.getElementById("answer2").style.visibility = 'hidden';
-	document.getElementById("answer3").style.visibility = 'hidden';
-	document.getElementById("answer4").style.visibility = 'hidden';
+	for (i=0; i<answerButtons.length; i++){
+		answerButtons[i].style.visibility = 'hidden';
+	}
 }
 
 function showButtons() {
-	document.getElementById("answer1").style.visibility = 'visible';
-	document.getElementById("answer2").style.visibility = 'visible';
-	document.getElementById("answer3").style.visibility = 'visible';
-	document.getElementById("answer4").style.visibility = 'visible';
+	for (i=0; i<answerButtons.length; i++){
+		answerButtons[i].style.visibility = 'visible';
+	}
 }
 
 updatePage();
